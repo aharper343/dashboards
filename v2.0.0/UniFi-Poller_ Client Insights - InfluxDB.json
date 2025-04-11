@@ -36,12 +36,6 @@
     },
     {
       "type": "panel",
-      "id": "natel-discrete-panel",
-      "name": "Discrete",
-      "version": "0.0.9"
-    },
-    {
-      "type": "panel",
       "id": "table-old",
       "name": "Table (old)",
       "version": ""
@@ -1619,64 +1613,40 @@
       }
     },
     {
-      "backgroundColor": "rgba(128,128,128,0.1)",
-      "colorMaps": [
-        {
-          "color": "#70dbed",
-          "text": "Upper N"
-        },
-        {
-          "color": "#806eb7",
-          "text": "Lower G"
-        },
-        {
-          "color": "#806eb7",
-          "text": "Lower N"
-        },
-        {
-          "color": "#64b0c8",
-          "text": "Upper G"
-        }
-      ],
-      "crosshairColor": "#8F070C",
-      "datasource": "${DS_UNIFI_POLLER}",
+      "id": 17,
+      "type": "state-timeline",
+      "title": "Wifi Client / AP",
       "description": "Shows which wireless radio a client is connected to. Setting AP does not change this.",
-      "display": "timeline",
-      "expandFromQueryS": 0,
-      "extendLastValue": true,
+      "gridPos": {
+        "x": 0,
+        "y": 63,
+        "h": 16,
+        "w": 12
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {
+            "lineWidth": 0,
+            "fillOpacity": 70,
+            "showPoints": "never"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "palette-classic"
+          }
         },
         "overrides": []
       },
-      "gridPos": {
-        "h": 16,
-        "w": 12,
-        "x": 0,
-        "y": 63
-      },
-      "highlightOnMouseover": true,
-      "id": 17,
-      "legendSortBy": "-ms",
-      "lineColor": "rgba(0,0,0,0.1)",
-      "links": [],
-      "metricNameColor": "#000000",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "rowHeight": 28,
-      "showDistinctCount": false,
-      "showLegend": true,
-      "showLegendNames": false,
-      "showLegendPercent": true,
-      "showLegendValues": true,
-      "showTimeAxis": true,
-      "showTransitionCount": true,
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "alias": "[[Identifier]]",
@@ -1727,108 +1697,65 @@
               "operator": "=~",
               "value": "/^${AP:regex}$/"
             }
-          ]
+          ],
+          "datasource": "${DS_UNIFI_POLLER}"
         }
       ],
-      "textSize": 16,
-      "textSizeTime": 14,
-      "timeOptions": [
-        {
-          "name": "Years",
-          "value": "years"
+      "datasource": "${DS_UNIFI_POLLER}",
+      "options": {
+        "mergeValues": true,
+        "showValue": "auto",
+        "alignValue": "center",
+        "rowHeight": 0.9,
+        "legend": {
+          "showLegend": true,
+          "displayMode": "list"
         },
-        {
-          "name": "Months",
-          "value": "months"
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
         },
-        {
-          "name": "Weeks",
-          "value": "weeks"
-        },
-        {
-          "name": "Days",
-          "value": "days"
-        },
-        {
-          "name": "Hours",
-          "value": "hours"
-        },
-        {
-          "name": "Minutes",
-          "value": "minutes"
-        },
-        {
-          "name": "Seconds",
-          "value": "seconds"
-        },
-        {
-          "name": "Milliseconds",
-          "value": "milliseconds"
+        "timeline": {
+          "showValue": "auto"
         }
-      ],
-      "timePrecision": {
-        "name": "Minutes",
-        "value": "minutes"
-      },
-      "timeTextColor": "#d8d9da",
-      "title": "Wifi Client / AP",
-      "type": "natel-discrete-panel",
-      "units": "short",
-      "useTimePrecision": false,
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "Upper G",
-          "value": "80:2a:a8:12:ae:0c"
-        },
-        {
-          "op": "=",
-          "text": "Lower G",
-          "value": "80:2a:a8:11:ae:87"
-        },
-        {
-          "op": "=",
-          "text": "Lower N",
-          "value": "80:2a:a8:12:ae:87"
-        },
-        {
-          "op": "=",
-          "text": "Upper N",
-          "value": "80:2a:a8:11:ae:0c"
-        },
-        {
-          "op": "=",
-          "text": "NAME",
-          "value": "MAC"
-        },
-        {
-          "op": "=",
-          "text": "YOUR OWN!",
-          "value": "ADD"
-        }
-      ],
-      "valueTextColor": "#000000",
-      "writeAllValues": false,
-      "writeLastValue": false,
-      "writeMetricNames": true
+      }
     },
     {
       "backgroundColor": "rgba(128,128,128,0.1)",
-      "colorMaps": [
-        {
-          "color": "#CCC",
-          "text": "N/A"
-        }
-      ],
-      "crosshairColor": "#8F070C",
       "datasource": "${DS_UNIFI_POLLER}",
       "description": "Shows IPs assigned to non-static clients. Clients with many changes may indicate misconfiguration or two clients sharing the same name.",
-      "display": "timeline",
-      "expandFromQueryS": 0,
-      "extendLastValue": true,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {
+            "lineWidth": 0,
+            "fillOpacity": 70,
+            "showPoints": "never",
+            "fontSize": 16
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "null": {
+                  "text": "N/A",
+                  "color": "#CCC"
+                }
+              }
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "displayName": "${__field.labels.name} (${__field.labels.mac})"
         },
         "overrides": []
       },
@@ -1838,27 +1765,8 @@
         "x": 12,
         "y": 63
       },
-      "highlightOnMouseover": true,
       "id": 18,
-      "legendSortBy": "-ms",
-      "lineColor": "rgba(0,0,0,0.1)",
       "links": [],
-      "metricNameColor": "#000000",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "rowHeight": 28,
-      "showDistinctCount": false,
-      "showLegend": false,
-      "showLegendNames": false,
-      "showLegendPercent": true,
-      "showLegendValues": true,
-      "showTimeAxis": true,
-      "showTransitionCount": false,
       "targets": [
         {
           "alias": "[[Identifier]]",
@@ -1969,62 +1877,26 @@
           ]
         }
       ],
-      "textSize": 16,
-      "textSizeTime": 14,
-      "timeOptions": [
-        {
-          "name": "Years",
-          "value": "years"
-        },
-        {
-          "name": "Months",
-          "value": "months"
-        },
-        {
-          "name": "Weeks",
-          "value": "weeks"
-        },
-        {
-          "name": "Days",
-          "value": "days"
-        },
-        {
-          "name": "Hours",
-          "value": "hours"
-        },
-        {
-          "name": "Minutes",
-          "value": "minutes"
-        },
-        {
-          "name": "Seconds",
-          "value": "seconds"
-        },
-        {
-          "name": "Milliseconds",
-          "value": "milliseconds"
-        }
-      ],
-      "timePrecision": {
-        "name": "Minutes",
-        "value": "minutes"
-      },
-      "timeTextColor": "#d8d9da",
       "title": "Client / IP",
-      "type": "natel-discrete-panel",
-      "units": "short",
-      "useTimePrecision": false,
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueTextColor": "#000000",
-      "writeAllValues": false,
-      "writeLastValue": false,
-      "writeMetricNames": true
+      "type": "state-timeline",
+      "options": {
+        "mergeValues": true,
+        "showValue": "auto",
+        "alignValue": "center",
+        "rowHeight": 0.9,
+        "legend": {
+          "showLegend": false,
+          "displayMode": "list"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "timeline": {
+          "showValue": "auto"
+        },
+        "extendLastValue": true
+      }
     },
     {
       "aliasColors": {},
