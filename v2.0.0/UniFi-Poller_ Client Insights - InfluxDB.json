@@ -1068,7 +1068,7 @@
           "measurement": "clients",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "select count(distinct(hostname)) FROM \"clients\" WHERE time > now() - 5m AND site_name =~ /^${Site:regex}$/ AND ((\"name\" =~ /^${Wireless:regex}$/ AND \"ap_name\" =~ /^${AP:regex}$/) OR (\"name\" =~ /^${Wired:regex}$/ AND \"sw_name\" =~ /^${Switch:regex}$/ )) GROUP BY \"oui\"",
+          "query": "select count(distinct(hostname)) FROM \"clients\" WHERE time > now() - 5m AND site_name =~ /^${Site:regex}$/ AND ((\"name\" =~ /^${Wireless:regex}$/ AND \"ap_name\" =~ /^${AP:regex}$/) OR (\"name\" =~ /^${Wired:regex}$/ AND \"sw_name\" =~ /^${Switch:regex}$/ )) AND \"oui\" != '' GROUP BY \"oui\"",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
